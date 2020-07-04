@@ -10,6 +10,8 @@ import com.matrix.domain.TituloModel;
 import com.matrix.servicio.bean.AlquilerServicio;
 import com.matrix.servicio.mysql.jpa.entity.Alquiler;
 import com.matrix.servicio.mysql.jpa.entity.view.VistaAlquiler;
+import com.matrix.servicio.mysql.jpa.repository.PlataformaRepository;
+import com.matrix.servicio.mysql.jpa.repository.ProductorRepository;
 import com.matrix.servicio.mysql.jpa.repository.VistaAlquilerRepository;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,14 +36,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/alquiler")
-@CrossOrigin(origins = "http://localhost:8100")
+@CrossOrigin(origins = "*")
 public class AlquilerRestController {
     
     @Autowired
-    private AlquilerServicio alquilerServicio;
+    private AlquilerServicio alquilerServicio;    
     
     @Autowired
-    private VistaAlquilerRepository vistaRepository;
+    private VistaAlquilerRepository vistaRepository;    
     
     @GetMapping
     public ResponseEntity getListadoAlquiler(){        

@@ -6,6 +6,7 @@
 package com.matrix.servicio.bean.imp;
 
 import com.matrix.domain.TituloModel;
+import com.matrix.excepcion.AppError;
 import com.matrix.servicio.bean.TituloServicio;
 import com.matrix.servicio.mysql.jpa.entity.Plataforma;
 import com.matrix.servicio.mysql.jpa.entity.Productor;
@@ -87,9 +88,20 @@ public class TituloServicioImp implements TituloServicio{
     @Override
     public void editarTitulo(TituloModel titulo) {
         
-        Titulo get = repoTitulo.findById(titulo.getId()).get();
-        get.setValorAlquiler(titulo.getValoralquiler());
+        Optional<Plataforma> plataformaId = palataformaRepository.findById(titulo.getPlataforma());
+        Optional<Productor> productorId = productorRepository.findById(titulo.getProductor());
         
+        Titulo get = repoTitulo.findById(titulo.getId()).orElseThrow(()->new AppError("No existe titulo"));
+        
+        get.setDirector(titulo.getDirector());
+        //get.setDisponible(titulo.getDisponible());
+        get.setInventario(titulo.getInventario());
+        get.setNombre(titulo.getNombre());
+        get.setPlataforma(plataformaId.get());
+        get.setProductor(productorId.get());
+        get.setProtagonista(titulo.getProtagonista());
+        get.setYear(titulo.getYear());
+        get.setValorAlquiler(titulo.getValoralquiler());        
         repoTitulo.save(get);
     }
     

@@ -32,14 +32,24 @@ public class ClienteServicioImp implements ClienteServicio{
     
     @Override
     public void agregarCliente(Cliente cliente) {
-        Optional<Cliente> clienteDocumento = repoCliente.getClienteDocumento(cliente.getDocumento());        
+        Optional<Cliente> clienteDocumento = repoCliente.getClienteDocumento(cliente.getDocumento());
         if(clienteDocumento.isPresent()) throw new AppError("Existe documento");
         repoCliente.save(cliente);
     }
 
     @Override
     public void editarCliente(Cliente cliente) {
-        repoCliente.save(cliente);
+        Optional<Cliente> clienteDocumento = repoCliente.getClienteDocumento(cliente.getDocumento());
+        Cliente getCliente = clienteDocumento.orElseThrow(() -> {
+            return new AppError("No existe cliente con ese documento");
+        });
+        getCliente.setApellidos(cliente.getApellidos());        
+        getCliente.setNombres(cliente.getNombres());
+        getCliente.setDireccion(cliente.getDireccion());
+        getCliente.setEmail(cliente.getEmail());
+        getCliente.setFechaNacimiento(cliente.getFechaNacimiento());
+        getCliente.setTelefono(cliente.getTelefono());
+        repoCliente.save(getCliente);
     }   
 
     @Override

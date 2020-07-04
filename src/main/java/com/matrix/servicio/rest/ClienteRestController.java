@@ -46,13 +46,13 @@ public class ClienteRestController {
     
     @PostMapping
     public ResponseEntity postCliente(@RequestBody Cliente cliente){        
-        clienteServicio.agregarCliente(cliente);        
+        clienteServicio.agregarCliente(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     
     @PutMapping
     public ResponseEntity putCliente(@RequestBody Cliente cliente){        
-        clienteServicio.editarCliente(cliente);        
+        clienteServicio.editarCliente(cliente);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

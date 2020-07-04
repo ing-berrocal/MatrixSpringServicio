@@ -6,6 +6,7 @@
 package com.matrix.servicio.bean.imp;
 
 import com.matrix.domain.AlquilerModel;
+import com.matrix.excepcion.AppError;
 import com.matrix.servicio.bean.AlquilerServicio;
 import com.matrix.servicio.mysql.jpa.entity.Alquiler;
 import com.matrix.servicio.mysql.jpa.entity.Cliente;
@@ -46,10 +47,21 @@ public class AlquilerServicioImp implements AlquilerServicio{
         Optional<Cliente> clienteId = clienteRepository.findById(alquiler.getCliente());
         Optional<Titulo> tituloId = tituloRepository.findById(alquiler.getTitulo());
         
+        Cliente getCliente = clienteId.orElseThrow(() -> {
+            return new AppError("No existe cliente");
+        });
+        
+        Titulo getTitulo = tituloId.orElseThrow(() -> {
+            return new AppError("No existe titulo");
+        });
+        
+        if(getTitulo.getDisponible() == 0)
+            throw new AppError("Titulo no disponible");
+        
         Alquiler a = new Alquiler();
         a.setClienteId(clienteId.get());
-        a.setTituloId(tituloId.get());
-        a.setValorDia(tituloId.get().getValorAlquiler());
+        a.setTituloId(getTitulo);
+        a.setValorDia(getTitulo.getValorAlquiler());
         a.setFechaAlquiler(Calendar.getInstance().getTime());
         a.setDiasAlquiler(alquiler.getDias());
         a.setEstado(1);

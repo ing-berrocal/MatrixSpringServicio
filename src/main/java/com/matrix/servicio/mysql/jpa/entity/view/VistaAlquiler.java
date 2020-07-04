@@ -63,6 +63,9 @@ public class VistaAlquiler implements Serializable {
     @Column    
     private String observacion;
 
+    @Column
+    private Integer fechaYear;
+    
     public Long getId() {
         return id;
     }
@@ -173,6 +176,14 @@ public class VistaAlquiler implements Serializable {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
+    }
+
+    public Integer getFechaYear() {
+        return fechaYear;
+    }
+
+    public void setFechaYear(Integer fechaYear) {
+        this.fechaYear = fechaYear;
     }
 
     

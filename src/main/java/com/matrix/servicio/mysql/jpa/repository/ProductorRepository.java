@@ -6,7 +6,7 @@
 package com.matrix.servicio.mysql.jpa.repository;
 
 import com.matrix.servicio.mysql.jpa.entity.Productor;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
  * @author DELL
  */
 @Repository
-public interface ProductorRepository extends CrudRepository<Productor, Long> {                            
+public interface ProductorRepository extends JpaRepository<Productor, Long> {                            
 }

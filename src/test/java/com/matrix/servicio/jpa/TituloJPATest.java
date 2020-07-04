@@ -5,23 +5,17 @@
  */
 package com.matrix.servicio.jpa;
 
-import com.matrix.servicio.mysql.jpa.entity.Cliente;
 import com.matrix.servicio.mysql.jpa.entity.Titulo;
-import com.matrix.servicio.mysql.jpa.repository.ClienteRepository;
 import com.matrix.servicio.mysql.jpa.repository.TituloRepository;
-import java.util.Calendar;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
