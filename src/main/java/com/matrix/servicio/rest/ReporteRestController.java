@@ -5,6 +5,7 @@
  */
 package com.matrix.servicio.rest;
 
+import com.matrix.modelo.Reporte;
 import com.matrix.servicio.mysql.jpa.entity.view.VistaAlquiler;
 import com.matrix.servicio.mysql.jpa.entity.view.VistaCliente;
 import com.matrix.servicio.mysql.jpa.entity.view.VistaTitulo;
@@ -12,13 +13,10 @@ import com.matrix.servicio.mysql.jpa.repository.VistaAlquilerRepository;
 import com.matrix.servicio.mysql.jpa.repository.VistaClienteRepository;
 import com.matrix.servicio.mysql.jpa.repository.VistaTituloRepository;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
-import static java.util.stream.Collectors.counting;
-import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
